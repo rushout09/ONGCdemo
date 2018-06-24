@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "163395980041",
+    "firebase_url": "https://rushapp-f962b.firebaseio.com",
+    "project_id": "rushapp-f962b",
+    "storage_bucket": "rushapp-f962b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:163395980041:android:8e55dee140d39d8a",
+        "android_client_info": {
+          "package_name": "ml.rushabh.rushapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "163395980041-t13v7th9hljpbmukdp6in34gi6ae58lk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ml.rushabh.rushapp",
+            "certificate_hash": "632254898d22aec75d7c0da2e6da619f4b57996c"
+          }
+        },
+        {
+          "client_id": "163395980041-tud3vaga4iiocuiqelbc8aigv1bvmm4g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4AtKVW7XP0IzvJgeo6bnSvdgwqZzF5Bw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "163395980041-tud3vaga4iiocuiqelbc8aigv1bvmm4g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

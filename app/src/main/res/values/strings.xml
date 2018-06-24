@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">rushApp</string>
+
+
+    <string name="Welcome_note">Welcome to rushApp, your new efficient Assistant!</string>
+    <string name="get_started">Get Started</string>
+</resources>
