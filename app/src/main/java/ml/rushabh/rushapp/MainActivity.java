@@ -7,36 +7,97 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView email_tv;
-    TextView name_tv;
+    private TextView mUserEmail;
+    private TextView mUserName;
+
+
+    private EditText mTitle;
+    private EditText mDepartment;
+    private EditText mONGCId;
+    private EditText mQuery;
+    private Button mSubmit;
+
     private FirebaseUser mUser;
-    private FirebaseAuth mAuth;
+    private DatabaseReference mDatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        email_tv = (TextView)findViewById(R.id.user_email);
-        name_tv = (TextView)findViewById(R.id.user_name);
-        mUser = mAuth.getInstance().getCurrentUser();
+
+
+        mUserEmail = (TextView)findViewById(R.id.email_tv);
+        mUserName = (TextView)findViewById(R.id.userName_tv);
+        mTitle = (EditText)findViewById(R.id.Title_tv);
+        mDepartment = (EditText)findViewById(R.id.Department_tv);
+        mONGCId = (EditText)findViewById(R.id.ONGCId_tv);
+        mQuery = (EditText)findViewById(R.id.Query_tv);
+        mSubmit = (Button) findViewById(R.id.Submit_button);
+
+
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mUser = FirebaseAuth.getInstance().getCurrentUser();
+
+
         if (mUser != null) {
             // User is signed in
-            email_tv.append(mUser.getEmail());
-            name_tv.append(mUser.getDisplayName());
-        } else {
-            // No user is signed in
-            email_tv.append("No user is signed in");
+            mUserEmail.append(mUser.getEmail());
+            mUserName.append(mUser.getDisplayName());
+
+            mSubmit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mSubmit.setEnabled(false);
+                    Toast.makeText(getApplicationContext(),"Uploading Data...",Toast.LENGTH_SHORT).show();
+
+                    Complain complain = new Complain(mUser.getDisplayName(),mUser.getEmail(),mTitle.getText().toString(),
+                            mDepartment.getText().toString(),mONGCId.getText().toString(),
+                            mQuery.getText().toString());
+                    mDatabase.child("complaints").push().setValue(complain).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            Toast.makeText(getApplicationContext(),"Data upload complete",Toast.LENGTH_SHORT).show();
+                            mSubmit.setEnabled(true);
+                            clearForm();
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(getApplicationContext(),"Data upload failed. Try again later.",Toast.LENGTH_SHORT).show();
+                            mSubmit.setEnabled(true);
+                        }
+                    });
+
+
+                }
+            });
+
         }
 
+    }
+
+    void clearForm(){
+        mTitle.setText("");
+        mQuery.setText("");
+        mONGCId.setText("");
+        mDepartment.setText("");
     }
 
     @Override

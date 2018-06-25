@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Your Email : "
-        android:id="@+id/user_email"
+        android:id="@+id/email_tv"
         android:padding="8dp"
         android:textSize="16sp"
         />
@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Your username : "
-        android:id="@+id/user_name"
+        android:id="@+id/userName_tv"
         android:padding="8dp"
         android:textSize="16sp"/>
     <TextView
@@ -30,24 +30,28 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter a brief title here."
+        android:id="@+id/Title_tv"
         android:padding="16sp"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Department name"
+        android:id="@+id/Department_tv"
         android:padding="16sp"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="ONGC id"
+        android:hint="ONGC Id"
+        android:id="@+id/ONGCId_tv"
         android:padding="16sp"/>
     <EditText
-            android:layout_width="match_parent"
-            android:layout_height="200sp"
-            android:hint="Enter your query in detail."
-            android:textSize="16sp"
-            android:padding="16sp"
-            android:gravity="top"/>
+        android:layout_width="match_parent"
+        android:layout_height="200sp"
+        android:hint="Enter your query in detail."
+        android:textSize="16sp"
+        android:id="@+id/Query_tv"
+        android:padding="16sp"
+        android:gravity="top"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
