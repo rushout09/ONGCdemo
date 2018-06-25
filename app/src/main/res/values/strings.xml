@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">rushApp</string>
+    <string name="app_name">ONGC Project</string>
 
 
-    <string name="Welcome_note">Welcome to rushApp, your new efficient Assistant!</string>
+    <string name="Welcome_note">Welcome to ONGC, Register your complaints here!</string>
     <string name="get_started">Get Started</string>
 </resources>
