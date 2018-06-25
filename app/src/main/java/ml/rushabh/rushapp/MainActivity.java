@@ -30,11 +30,11 @@ public class MainActivity extends AppCompatActivity {
         mUser = mAuth.getInstance().getCurrentUser();
         if (mUser != null) {
             // User is signed in
-            email_tv.setText(mUser.getEmail());
-            name_tv.setText(mUser.getDisplayName());
+            email_tv.append(mUser.getEmail());
+            name_tv.append(mUser.getDisplayName());
         } else {
             // No user is signed in
-            email_tv.setText("No user is signed in");
+            email_tv.append("No user is signed in");
         }
 
     }

@@ -55,8 +55,8 @@ public class IntroActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
 
-            } else {
-                Toast.makeText(this,"Sign In Failed, Try Again!",Toast.LENGTH_SHORT).show();
+            } else{
+                Toast.makeText(this,"Sign In Canceled!",Toast.LENGTH_SHORT).show();
             }
         }
     }

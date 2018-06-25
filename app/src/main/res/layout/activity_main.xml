@@ -1,21 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Your Email:"
-        android:id="@+id/user_email"
-        android:layout_above="@+id/user_name"
-        android:layout_centerHorizontal="true"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Your username"
-        android:id="@+id/user_name"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"/>
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="8dp"
+    android:orientation="vertical">
 
-</RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Your Email : "
+        android:id="@+id/user_email"
+        android:padding="8dp"
+        android:textSize="16sp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Your username : "
+        android:id="@+id/user_name"
+        android:padding="8dp"
+        android:textSize="16sp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Complain/Feedback form"
+        android:padding="8dp"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter a brief title here."
+        android:padding="16sp"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Department name"
+        android:padding="16sp"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="ONGC id"
+        android:padding="16sp"/>
+    <EditText
+            android:layout_width="match_parent"
+            android:layout_height="200sp"
+            android:hint="Enter your query in detail."
+            android:textSize="16sp"
+            android:padding="16sp"
+            android:gravity="top"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Submit_button"
+        android:text="Submit"
+        android:layout_gravity="center"
+        android:padding="16sp" />
+
+</LinearLayout>
