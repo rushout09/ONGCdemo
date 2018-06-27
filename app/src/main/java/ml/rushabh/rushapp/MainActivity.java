@@ -51,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
         mQuery = (EditText)findViewById(R.id.Query_tv);
         mSubmit = (Button) findViewById(R.id.Submit_button);
 
+        mSubmit.setEnabled(false);
+
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -58,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (mUser != null) {
             // User is signed in
+            mSubmit.setEnabled(true);
             mUserEmail.append(mUser.getEmail());
             mUserName.append(mUser.getDisplayName());
 
@@ -70,9 +73,9 @@ public class MainActivity extends AppCompatActivity {
                     Complain complain = new Complain(mUser.getDisplayName(),mUser.getEmail(),mTitle.getText().toString(),
                             mDepartment.getText().toString(),mONGCId.getText().toString(),
                             mQuery.getText().toString());
-                    mDatabase.child("complaints").push().setValue(complain).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    mDatabase.child("complaints").push().setValue(complain).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
-                        public void onComplete(@NonNull Task<Void> task) {
+                        public void onSuccess(Void aVoid) {
                             Toast.makeText(getApplicationContext(),"Data upload complete",Toast.LENGTH_SHORT).show();
                             mSubmit.setEnabled(true);
                             clearForm();
@@ -84,10 +87,11 @@ public class MainActivity extends AppCompatActivity {
                             mSubmit.setEnabled(true);
                         }
                     });
-
-
                 }
             });
+
+        }
+        else {
 
         }
 
@@ -109,21 +113,20 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent;
         if(R.id.sign_out == item.getItemId()){
             AuthUI.getInstance()
                     .signOut(this);
-            Intent intent = new Intent(MainActivity.this,IntroActivity.class);
+            intent = new Intent(MainActivity.this,IntroActivity.class);
             startActivity(intent);
             finish();
 
         }
+        else if(R.id.All_complains == item.getItemId()){
+            intent = new Intent(MainActivity.this,ComplainList.class);
+            startActivity(intent);
+        }
         return true;
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        AuthUI.getInstance()
-                .signOut(this);
-    }
 }

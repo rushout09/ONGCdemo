@@ -31,26 +31,26 @@
         android:padding="8dp"/>
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="56sp"
         android:hint="Enter a brief title here."
         android:id="@+id/Title_tv"
         android:padding="16sp"/>
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="56sp"
         android:hint="Department name"
         android:id="@+id/Department_tv"
         android:padding="16sp"/>
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="56sp"
         android:hint="ONGC Id"
         android:id="@+id/ONGCId_tv"
         android:padding="16sp"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="200sp"
-        android:hint="Enter your query in detail."
+        android:hint="Enter your complain in detail."
         android:textSize="16sp"
         android:id="@+id/Query_tv"
         android:padding="16sp"
