@@ -42,24 +42,22 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-        mUserEmail = (TextView)findViewById(R.id.email_tv);
-        mUserName = (TextView)findViewById(R.id.userName_tv);
-        mTitle = (EditText)findViewById(R.id.Title_tv);
-        mDepartment = (EditText)findViewById(R.id.Department_tv);
-        mONGCId = (EditText)findViewById(R.id.ONGCId_tv);
-        mQuery = (EditText)findViewById(R.id.Query_tv);
-        mSubmit = (Button) findViewById(R.id.Submit_button);
-
-        mSubmit.setEnabled(false);
-
-
-        mDatabase = FirebaseDatabase.getInstance().getReference();
         mUser = FirebaseAuth.getInstance().getCurrentUser();
 
 
         if (mUser != null) {
             // User is signed in
+            mUserEmail = (TextView)findViewById(R.id.email_tv);
+            mUserName = (TextView)findViewById(R.id.userName_tv);
+            mTitle = (EditText)findViewById(R.id.Title_tv);
+            mDepartment = (EditText)findViewById(R.id.Department_tv);
+            mONGCId = (EditText)findViewById(R.id.ONGCId_tv);
+            mQuery = (EditText)findViewById(R.id.Query_tv);
+            mSubmit = (Button) findViewById(R.id.Submit_button);
+
+
+
+            mDatabase = FirebaseDatabase.getInstance().getReference();
             mSubmit.setEnabled(true);
             mUserEmail.append(mUser.getEmail());
             mUserName.append(mUser.getDisplayName());
@@ -92,7 +90,9 @@ public class MainActivity extends AppCompatActivity {
 
         }
         else {
-
+            Intent intent = new Intent(this,IntroActivity.class);
+            startActivity(intent);
+            finish();
         }
 
     }

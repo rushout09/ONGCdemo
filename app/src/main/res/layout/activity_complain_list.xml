@@ -4,7 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 <TextView android:layout_height="match_parent"
     android:layout_width="match_parent"
-    android:text="@string/app_name"
+    android:text="Previous Complains\n\n"
     android:id="@+id/listView_comp"
     android:textSize="24sp"
     xmlns:android="http://schemas.android.com/apk/res/android" />
