@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
                     Complain complain = new Complain(mUser.getDisplayName(),mUser.getEmail(),mTitle.getText().toString(),
                             mDepartment.getText().toString(),mONGCId.getText().toString(),
                             mQuery.getText().toString());
-                    mDatabase.child("complaints").push().setValue(complain).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    mDatabase.child("complains").push().setValue(complain).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
                             Toast.makeText(getApplicationContext(),"Data upload complete",Toast.LENGTH_SHORT).show();

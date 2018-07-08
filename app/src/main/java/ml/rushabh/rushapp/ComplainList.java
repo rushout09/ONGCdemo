@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.firebase.database.ChildEventListener;
@@ -13,10 +14,15 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ComplainList extends AppCompatActivity {
 
     private DatabaseReference mDatabase;
-    private TextView mList;
+    private ListView mListView;
+    private ComplainAdapter mComplainAdapter;
+
     private ChildEventListener mcomplainListener;
 
     @Override
@@ -24,8 +30,13 @@ public class ComplainList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_complain_list);
 
-        mDatabase = FirebaseDatabase.getInstance().getReference("complaints");
-        mList = (TextView) findViewById(R.id.listView_comp);
+        mDatabase = FirebaseDatabase.getInstance().getReference("complains");
+
+        mListView = (ListView)findViewById(R.id.listView_comp);
+
+        List<Complain> mComplainList = new ArrayList<>();
+        mComplainAdapter = new ComplainAdapter(this, R.layout.item_complain,mComplainList);
+        mListView.setAdapter(mComplainAdapter);
         attachDatabaseListener();
 
     }
@@ -36,7 +47,7 @@ public class ComplainList extends AppCompatActivity {
                 public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
                     Complain complain = dataSnapshot.getValue(Complain.class);
-                    mList.append("Title : "+complain.Title+"\nQuery : "+complain.Query+"\n by "+complain.Email+"\n\n\n");
+                    mComplainAdapter.add(complain);
 
                 }
 
